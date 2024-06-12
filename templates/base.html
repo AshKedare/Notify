@@ -1,0 +1,395 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Carousel Template · Bootstrap v5.3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Gujarati:wght@100..800&family=Dancing+Script:wght@400..700&family=Workbench&display=swap" rel="stylesheet">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+
+        /* font */
+        .anek-gujarati{
+        font-family: "Anek Gujarati", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        font-style: normal;
+        font-variation-settings:
+          "wdth" 100;
+      }
+
+      /* color */
+        .line-container{
+          color: #ffffff;
+        }
+
+        .notif_title{
+          color: rgb(64, 230, 246);
+          margin-top: 15px;
+        }
+        body {
+          background: radial-gradient(circle, #3d0d6d, #170527); /* Circular gradient */
+          background-position: 50% 50%;
+          background-size: cover;
+          color: #ffffff;
+        }
+
+
+        .left-part,
+        .right-part {
+            background-color: #350b5e;
+            border-radius: 12px;
+            padding-top: 4%;
+            
+        }
+        .left-part{
+          height: 600px;
+          /* margin-left: 1%; */
+        }
+        .middle-column {
+            padding-left: 30px;
+            padding-right: 30px;
+            margin-left: 15px;
+            margin-right: 15px;
+            font-palette:inherit;
+            border: 2px solid #dedacd79; /* Golden color */
+            border-radius: 20%; 
+            position: relative;
+            
+        }
+
+        .position-sticky {
+            top: 0;
+            height: calc(100vh - 56px); 
+            overflow-y: auto; 
+        }
+
+        .notif_img{
+          height:auto;
+          width:100%;
+          margin-bottom: 20px;
+          margin-top: 20px;
+        }
+       
+        .circle{
+          width:50px;
+          height:50px;
+        }
+
+        .exam-link{
+          text-decoration: none;
+          color: #ffffff;
+        }
+
+        /* 3 dots */
+        .three_dots{
+        color: #ffffff;
+        position: absolute; 
+        /* left:90%; */
+        top:3%;
+        right:2%;
+        background-blend-mode: lighten;
+        background-color:inherit;
+        border:none;
+        max-width: 100%;
+        }
+        
+        .dot_class{
+          display: inline-block;
+          max-width: 100%;
+        }
+
+        /* img skeleton */
+        .skeleton{
+          margin: 10px;
+          position:relative;
+        }
+
+        .skeleton::before{      
+          content: '';
+          position:absolute;
+          top:0%;
+          left:0%;
+          width:100%;
+          height:100%;
+          z-index: 10;
+          background:linear-gradient(90deg, #aba8a8,#dfddddec,#9e9c9c);
+          background-size: 200%;
+          animation:skeleton 1s infinite linear;
+        }
+
+        @keyframes skeleton{
+          0%{
+            background-position:-100% 0;
+          }
+          100%{
+            background-position:100% 0;
+          }
+        }
+      /* carousel */
+
+        .carousel-indicators .active{
+          background-color: rgb(64, 230, 246);
+        }
+        body .carousel-indicators{
+          bottom: -40px;
+        }
+        body .carousel-indicators button{
+            background-color:blue;
+        } 
+        body .carousel-control-prev-icon,
+        body .carousel-control-next-icon{
+            background-color: blue;
+        }
+       .carousel-control-next,
+       .carousel-control-prev{
+          top:auto; 
+          bottom:auto;
+        }
+        .carousel-controls {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .carousel-controls .carousel-control-prev,
+      .carousel-controls .carousel-control-next {
+        align-self: center;
+        margin: 0 -60px;
+      }
+
+      @media screen and (min-width: 576px) {
+      .carousel-inner {
+        display: flex;
+      }
+
+      .carousel-item {
+        display: block;
+        margin-right: 0;
+        flex: 0 0 calc(100%/3);
+      
+      }
+    }
+
+    /* custom css for owl carousel */ 
+
+      /* Target the owl-carousel container */
+      .owl-carousel {
+          
+      }
+
+      /* Target the individual carousel items */
+      .owl-carousel .owl-item {
+          padding-left: 2%;
+          padding-right: 2%;
+          max-width: 100%;
+          height: auto;
+      }
+
+      /* Target the navigation arrows */
+      .owl-carousel .owl-nav {
+      display:none;
+      }
+
+      /* Target the navigation dots */
+      .owl-carousel .owl-dots {
+
+      }
+
+
+      /* Target the navigation dots individually */
+      .owl-carousel .owl-dots .owl-dot {
+        
+      }
+
+      /* Target the active navigation dot */
+      .owl-carousel .owl-dots .owl-dot.active {
+        
+      }
+
+      .scroll{
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+    </style>
+</head>
+
+<body class="anek-gujarati">
+
+    <main>
+      <div class="container my-3">
+        <div id="carouselExampleAutoplaying" class="carousel slide my-4 col-md-8 col-sm-12 mx-auto">
+          <div id="mycarousel" class="owl-carousel owl-theme"> <!-- Add owl-carousel class and owl-theme -->
+            {% for exam in exams %}
+              <div class="item"> <!-- Add item class -->
+                <div class="col-md-12 items text-center mb-3" margin-right="0" >         
+                  <img src="{% static 'nitro jemson.jpeg' %}" class="bd-placeholder-img rounded-circle img-fluid" style="max-width:100%; height: auto;" focusable="false">
+                  <p class="my-2"><a class="link-opacity-50-hover exam-link" href="#" data-exam-id="{{ exam.Id }}" data-exam-category="{{ exam.category }}">{{ exam.name }}</a></p>                              
+                </div>
+              </div>
+            {% endfor %}
+          </div>       
+        </div>     
+          <!-- container div end -->
+      </div>
+
+        <hr class="featurette-divider">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 my-2 left-part">
+                    <!-- Add content for left side here -->
+                    <marquee width="100%" direction="up" height="90%" align-content="justify">
+                      {% for scroll in Scrolling %}
+                      <p class="scroll">{{ scroll.description }}</p>
+                      {% endfor %}
+                      </marquee>
+                </div>
+                <div class="col-md-8" id="notificationsContainer">
+                 
+                  {% for notification in notifications reversed %}
+                  <div class="my-3 rounded text-body-emphasis middle-column" data-category="{{ notification.category }}">
+                      <div class="d-flex align-items-center">
+                          <img src="{% static 'nitro jemson.jpeg' %}" alt="..." class="me-3 rounded-circle flex-shrink-0 circle">
+                          <div class="notif_title">
+                              <h5 class="skeleton my-2">{{ notification.name }}</h5>
+                              <p class="skeleton" style="margin-top:-6px;">{{ notification.date_time }}</p>
+                          </div>
+ 
+                          <span class="dot_class">
+                            <button class="three_dots btn btn-light" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
+                              </svg>
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#" id="copylink">Copy Link</a></li>
+                              <li><a class="dropdown-item" href="#">Menu item</a></li>
+                              <li><a class="dropdown-item" href="#">Menu item</a></li>
+                            </ul>
+                          </span>                       
+                      </div>
+                      
+                      
+                      <div class="skeleton line-container">
+                          <p>Category: {{ notification.category }}</p>
+                          <p class="card-text">{{ notification.description }}</p>
+                      </div>                       
+                      <div class="skeleton">
+                          <img class="notif_img" src="/media/{{ notification.image }}" alt="..." />
+                      </div>
+                  </div>
+                  {% endfor %}                
+                   
+                </div>
+                <div class="col-md-2  my-2 position-sticky right-part">
+                    <!-- Add content for right side here -->
+                    <marquee width="100%" direction="up" height="90%" align-content="justify">
+                      <p>This is a sample scrolling text that has scrolls in the upper direction.</p>
+                      <p>This is a second sample scrolling text that has scrolls in the upper direction.</p>
+                      <p>This is a third sample scrolling text that has scrolls in the upper direction.</p>
+                      <p>This is a fourth sample scrolling text that has scrolls in the upper direction.</p>
+                      </marquee>
+                </div>
+                <!-- row end -->
+            </div>
+            <!-- container end -->
+        </div>
+    </main>
+
+    <footer class="container">
+        <p class="float-end"><a href="#">Back to top</a></p>
+        <p>&copy; 2024 EagleByte Solutions, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+    <!-- jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <!-- owl carousel script file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+<script>
+// copy url
+const source = document.querySelector("#copylink");
+
+source.addEventListener("copy", (event) => {
+  const selection = document.getSelection();
+  event.clipboardData.setData("text/plain", selection.toString().toUpperCase());
+  event.preventDefault();
+});
+
+  //owl carousel
+  $(document).ready(function(){
+    $(".owl-carousel").owlCarousel({
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 2000,
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 1,
+                nav: false
+            },
+            600: {
+                items: 2,
+                nav: false
+            },
+            1000: {
+                items: 3,
+                nav: false,
+                loop: true
+            }
+        }
+    });
+});
+
+
+  //skeleton
+      const allskeleton = document.querySelectorAll('.skeleton')
+      window.addEventListener('load', function(){
+          allskeleton.forEach(item=> {
+              item.classList.remove('skeleton')
+          })
+      }) 
+     
+function filterNotifications(category) {
+    // Your filtering logic here
+    // For example, you can show/hide notifications based on the category
+    var notifications = document.querySelectorAll('.my-3[data-category]');
+    notifications.forEach(function(notification) {
+        var notificationCategory = notification.getAttribute('data-category');
+        if (notificationCategory !== category) {
+            notification.style.display = 'none';
+        } else {
+            notification.style.display = 'block';
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    var examLinks = document.querySelectorAll('.exam-link');
+
+    examLinks.forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            var examCategory = link.getAttribute('data-exam-category');
+            filterNotifications(examCategory);
+        });
+    });
+});
+
+
+</script>
+  
+</body>
+</html>
